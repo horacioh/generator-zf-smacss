@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - '0.10'
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'generator-zf-smacss' ]; then cd .. && eval "mv $currentfolder generator-zf-smacss" && cd generator-zf-smacss; fi
+
