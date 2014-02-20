@@ -1,0 +1,31 @@
+!!! 5
+/[if lt IE 7]   <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en-us">
+/[if IE 7]      <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en-us">
+/[if IE 8]      <html class="no-js lt-ie10 lt-ie9" lang="en-us">
+/[if IE 9]      <html class="no-js lt-ie10 lt-ie9" lang="en-us">
+/[if lt IE 10]  <html class="no-js lt-ie10" lang="en-us">
+/[if !IE]>
+%html{lang: 'en', class: 'no-js'}
+  /<![endif]
+  %head
+    %title
+    %meta(http-equiv="content-type" content="text/html" charset="utf-8")
+    %meta(http-equiv="x-ua-compatible" content="ie=edge,chrome=1")
+    %meta(name="description" content="")
+    %meta(name="author" content="")
+    %meta(name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1")
+
+    %script{src: "js/modernizr.min.js"}
+
+    / build:css css/app.min.css
+    %link{href: "css/app.css", rel: "stylesheet", type: "text/css"}/
+    / /build
+
+  %body
+
+    / build:js js/app.min.js
+    %script{src: "../components/jqueryjquery.min.js"}
+    %script{src: "../components/foundation/js/foundation.min.js"}
+    %script{src: "../components/retina.js/src/retina.js"}
+    %script{src: "js/app.js"}
+    / /build

@@ -1,6 +1,18 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= _.slugify(projName) %>",
+  "version": "0.0.1",
+  "authors": [
+    "Horacio Herrera <me@hherrerag.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "source/components"
+  ],
+  "devDependencies": {
+    "foundation"    : "~5.0.3",
+    "jquery"        : "~2.1.0",
+    "retina.js"     : "1.2.0"
+  }
 }
 

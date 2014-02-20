@@ -1,0 +1,6 @@
+.DS_Store
+/source/components/
+/.sass-cache/
+/node_modules/
+/.grunt/
+/.ftppass
