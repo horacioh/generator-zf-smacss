@@ -10,9 +10,16 @@
     "source/components"
   ],
   "devDependencies": {
-    "foundation"    : "~5.0.3",
-    "jquery"        : "~2.1.0",
-    "retina.js"     : "1.2.0"
+    "jquery"        : "*"
+    <% if (includeFoundation) { %>
+      ,"foundation"    : "*"
+    <% } %>
+    <% if (includeRetina) { %>
+      ,"retina.js"     : "*"
+    <% }
+    if (includeParallax) { %>
+      ,"jquery.superscrollorama"     : "*"
+    <% } %>
   }
 }
 

@@ -2,16 +2,11 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    //global variables
-    srcFolder: 'source',
-    devFolder: 'dev',
-		buildFolder: 'build',
-		port: 4567,
 
     // Tasks setup.
     clean: {
-      dev: ['<%= devFolder %>'],
-      prod: ['<%= buildFolder %>']
+      dev: ['dev'],
+      prod: ['build']
     },
 
     concurrent: {
@@ -23,15 +18,15 @@ module.exports = function(grunt) {
       dev: {
         files: [
           // includes files within path
-          {expand: true, flatten: true, src: ['<%= srcFolder %>/assets/**'], dest: '<%= devFolder %>/assets/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['<%= srcFolder %>/css/fonts/**'], dest: '<%= devFolder %>/css/fonts/', filter: 'isFile'}
+          {expand: true, flatten: true, src: ['source/assets/**'], dest: 'dev/assets/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['source/css/fonts/**'], dest: 'dev/css/fonts/', filter: 'isFile'}
         ]
       },
       prod: {
         files: [
           // includes files within path
-          {expand: true, flatten: true, src: ['<%= srcFolder %>/assets/**'], dest: '<%= buildFolder %>/assets/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['<%= srcFolder %>/css/fonts/**'], dest: '<%= buildFolder %>/css/fonts/', filter: 'isFile'}
+          {expand: true, flatten: true, src: ['source/assets/**'], dest: 'build/assets/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['source/css/fonts/**'], dest: 'build/css/fonts/', filter: 'isFile'}
         ]
       }
     },
@@ -43,18 +38,18 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= srcFolder %>/',
+          cwd: 'source/',
           src: ['**/*.haml'],
-          dest: '<%= devFolder %>/',
+          dest: 'dev/',
           ext: '.html'
         }]
       },
       prod: {
         files: [{
           expand: true,
-          cwd: '<%= srcFolder %>/',
+          cwd: 'source/',
           src: ['**/*.haml'],
-          dest: '<%= buildFolder %>/',
+          dest: 'build/',
           ext: '.html'
         }]
       }
@@ -64,9 +59,9 @@ module.exports = function(grunt) {
       prod: {
         files: [{
           expand: true,
-          cwd: '<%= devFolder %>/',
+          cwd: 'dev/',
           src: ['**/*.html'],
-          dest: '<%= buildFolder %>/',
+          dest: 'build/',
           ext: '.html'
         }]
       }
@@ -79,7 +74,7 @@ module.exports = function(grunt) {
           lineNumbers: true
         },
         files: {
-          '<%= devFolder %>/css/app.css': '<%= srcFolder %>/css/app.scss'
+          'dev/css/main.css': 'source/css/main.scss'
         }
       },
 
@@ -89,7 +84,7 @@ module.exports = function(grunt) {
           lineNumbers: false
         },
         files: {
-          '<%= buildFolder %>/css/app.min.css': '<%= srcFolder %>/css/app.scss'
+          'build/css/main.min.css': 'source/css/main.scss'
         }
       }
     },
@@ -118,22 +113,15 @@ module.exports = function(grunt) {
     },
 
     uncss: {
-      dev: {
-        files: {
-          '<%= devFolder %>/css/app.css': ['<%= devFolder %>/index.html', '<%= devFolder %>/kitchenSink.html']
-        }
-      },
-      prod: {
-        files: {
-          '<%= buildFolder %>/css/app.min.css': ['<%= buildFolder %>/index.html', '<%= buildFolder %>/kitchenSink.html']
-        }
+      files: {
+        'build/css/app.min.css': ['build/index.html']
       }
     },
 
     coffee: {
       compile: {
         files: {
-          '<%= devFolder %>/js/main.js': ['<%= srcFolder %>/js/*.coffee']
+          'dev/js/main.js': ['source/js/*.coffee']
         }
       }
     },
@@ -141,18 +129,32 @@ module.exports = function(grunt) {
     uglify: {
       dev: {
         files: {
-          '<%= devFolder %>/js/modernizr.min.js': ['<%= srcFolder %>/components/modernizr/modernizr.js']
+          'dev/js/app.js': [
+            'source/components/jquery/dist/jquery.min.js'
+            <% if (includeFoundation) { %>
+            ,'source/components/foundation/js/foundation.min.js'
+            <% }
+            if (includeRetina) { %>
+              ,'source/components/retina.js/src/retina.js'
+            <% } %>
+            ,'source/js/main.js'
+          ],
+          'dev/js/modernizr.min.js': ['source/components/modernizr/modernizr.js']
         }
       },
       prod: {
         files: {
-          '<%= buildFolder %>/js/app.min.js': [
-            '<%= srcFolder %>/components/jqueryjquery.min.js',
-            '<%= srcFolder %>/components/foundation/js/foundation.min.js',
-            '<%= srcFolder %>/components/retina.js/src/retina.js',
-            '<%= devFolder %>/js/main.js'
+          'build/js/app.min.js': [
+            'source/components/jquery/dist/jquery.min.js'
+            <% if (includeFoundation) { %>
+            ,'source/components/foundation/js/foundation.min.js'
+            <% }
+            if (includeRetina) { %>
+              ,'source/components/retina.js/src/retina.js'
+            <% } %>
+            ,'source/js/main.js'
           ],
-          '<%= buildFolder %>/js/modernizr.min.js': ['<%= srcFolder %>/components/modernizr/modernizr.js']
+          'build/js/modernizr.min.js': ['source/components/modernizr/modernizr.js']
         }
       }
     },
@@ -160,8 +162,8 @@ module.exports = function(grunt) {
     connect: {
       dev: {
          options: {
-          port: '<%= port %>',
-          base: '<%= devFolder %>/',
+          port: 4567,
+          base: 'dev/',
           hostname: 'localhost'
         }
       }
@@ -169,13 +171,13 @@ module.exports = function(grunt) {
 
     open: {
       server: {
-        path: 'http://localhost:<%= connect.dev.options.port %>'
+        path: 'http://localhost:4567'
       }
     },
 
     imageoptim: {
       prod: {
-        src: ['<%= srcFolder %>/assets']
+        src: ['source/assets']
       }
     },
 
@@ -186,9 +188,9 @@ module.exports = function(grunt) {
           port: 21000,
           authKey: 'admin'
         },
-        src: '<%= buildFolder %>/',
+        src: 'build/',
         dest: 'dev/docs/',
-        exclusions: ['<%= buildFolder %>/**/.DS_Store', '<%= buildFolder %>/**/Thumbs.db'],
+        exclusions: ['build/**/.DS_Store', 'build/**/Thumbs.db'],
         simple: true,
         useList: false
       }
