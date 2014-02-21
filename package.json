@@ -1,13 +1,13 @@
 {
   "name": "generator-zf-smacss",
   "version": "0.0.0",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator that includes JQuery, Zurb Foundation Framework, Retina.js & Superscrollorama.js Managed by Bower. Also you can follow the SMACSS Style Guide.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "hhg2288/generator-zf-smacss",
+  "repository": "https://github.com/hhg2288/generator-zf-smacss",
   "author": {
     "name": "Horacio Herrera",
-    "email": "hherrerag@me.com",
+    "email": "me@hherrerag.com",
     "url": "https://github.com/hhg2288"
   },
   "engines": {
