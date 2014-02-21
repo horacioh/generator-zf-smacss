@@ -31,7 +31,7 @@
 - [Haml](http://haml-lang.com)
 - [CoffeeScript](http://coffeescript.org/)
 - [SASS (scss)](http://sass-lang.com/)
-- & Javascript to custon grunt-tasks
+- & Javascript to custom Grunt-tasks
 
 ###Grunt Tasks installed
 
@@ -55,9 +55,12 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 - [grunt-imageoptim](https://github.com/JamieMason/grunt-imageoptim) to make ImageOptime part of your automated build process (require ImageOptim to be Installed)
 - [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) to minimize code processed by 'UNCSS'
 
-===================
-##Getting Started
+**NOTE**: If you would like to manipulate the Grunt tasks via Yeoman, or you think is a good idea let me know!
 
+
+
+##Getting Started
+===================
 
 1. Install the Generator Globally: `npm install -g zf-smacss`
 2. Go to your working directory: `cd path/to/your/directory`
@@ -65,8 +68,26 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 4. Follow the Prompt
 5. Run: `grunt server`
 
-You will get this:
+###You will get this:
 
 - A Scaffold project prepared so you can start coding your website with Foundation, Jquery, Modernizr & following the SMACSS style guide.
 - A Preview Server will start on port `4567` (default port, can be changed in the *Gruntfile.js*)
 - The *Watch Task* will be running, so whatever change you do on the source files, will be process on your `dev` enviroment.
+
+
+### Options
+
+* `--skip-install`
+
+  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
+
+** more options to come :)
+
+
+
+##Contribute
+===================
+
+Note: We are regularly asked whether we can add or take away features. If a change is good enough to have a positive impact on all users, we are happy to consider it.
+
+If not, `generator-zf-smacss` is fork-friendly and you can always maintain a custom version which you `npm install && npm link` to continue using via `yo zf-smacss` or a name of your choosing.
