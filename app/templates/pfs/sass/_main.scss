@@ -4,3 +4,20 @@ BASE SASS FILE
 author: Horacio Herrera
 -------------------
 */
+
+
+<% if (includeFoundation) { %>@import "../components/foundation/scss/normalize.scss";
+@import "../components/foundation/scss/foundation.scss";
+
+<% } else if (includeSmacss) { %>@import "base/_variables.scss";
+@import "base/_mixins.scss";
+@import "base/_overrides.scss";
+@import "base/_base.scss";
+
+@import "layout/_layout.scss";
+@import "module/_module.scss";
+@import "state/_state.scss";
+@import "theme/_theme.scss";
+
+@import "_shame.scss";
+<% } %>
