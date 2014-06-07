@@ -62,7 +62,7 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 ##Getting Started
 ===================
 
-1. Install the Generator Globally: `npm install -g zf-smacss`
+1. Install the Generator Globally: `npm install -g generator-zf-smacss`
 2. Go to your working directory: `cd path/to/your/directory`
 3. Run: `yo zf-smacss`
 4. Follow the Prompt
