@@ -1,6 +1,6 @@
 {
   "name": "generator-zf-smacss",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Yeoman generator that includes JQuery, Zurb Foundation Framework, Retina.js & Superscrollorama.js Managed by Bower. Also you can follow the SMACSS Style Guide.",
   "license": "MIT",
   "main": "app/index.js",
