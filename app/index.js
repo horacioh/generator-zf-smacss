@@ -102,7 +102,7 @@ var ZfSmacssGenerator = yeoman.generators.Base.extend({
   projectfiles: function () {
     this.template('_package.json', 'package.json');
     this.copy('editorconfig', '.editorconfig');
-    this.copy('ftppass', '.ftppass');
+    //this.copy('ftppass', '.ftppass');
   },
 
   haml: function () {
